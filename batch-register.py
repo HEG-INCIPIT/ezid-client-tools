@@ -213,6 +213,8 @@ import urllib2
 # library for better portability.
 import xml.etree.ElementTree
 
+base_url = "http://37.187.98.23"
+
 def loadMappings (file):
   # returns: [(destination, expression), ...]
   m = []
@@ -401,12 +403,12 @@ def process1 (args, record):
   if args.operation == "mint":
     id = None
     if args.removeIdMapping and "_id" in record: del record["_id"]
-    r = urllib2.Request("https://ezid.cdlib.org/shoulder/" +
+    r = urllib2.Request(base_url + "/shoulder/" +
       urllib.quote(args.shoulder, ":/"))
   else:
     id = str(record["_id"])
     del record["_id"]
-    r = urllib2.Request("https://ezid.cdlib.org/id/" + urllib.quote(id, ":/"))
+    r = urllib2.Request(base_url + "/id/" + urllib.quote(id, ":/"))
     r.get_method = lambda: "PUT" if args.operation == "create" else "POST"
   s = toAnvl(record).encode("UTF-8")
   r.add_data(s)
