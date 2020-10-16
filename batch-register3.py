@@ -402,12 +402,12 @@ def process1 (args, record):
     id = None
     if args.removeIdMapping and "_id" in record: del record["_id"]
 
-    r = urllib.request.Request("https://ezid.cdlib.org/shoulder/" +
+    r = urllib.request.Request("http://37.187.98.23/shoulder/" +
       urllib.parse.quote(args.shoulder, ":/"))
   else:
     id = str(record["_id"])
     del record["_id"]
-    r = urllib.request.Request("https://ezid.cdlib.org/id/" + urllib.parse.quote(id, ":/"))
+    r = urllib.request.Request("http://37.187.98.23/id/" + urllib.parse.quote(id, ":/"))
     r.get_method = lambda: "PUT" if args.operation == "create" else "POST"
   s = toAnvl(record).encode("UTF-8")
   r.data = s
@@ -545,4 +545,3 @@ except Exception as e:
   print((traceback.format_exc()))
   sys.stderr.write("%s: error: %s\n" % (sys.argv[0].split("/")[-1], str(e)))
   sys.exit(1)
-
