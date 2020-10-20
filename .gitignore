@@ -2,3 +2,4 @@ submissions/
 mapping*
 *.csv
 .python-version
+*.conf
