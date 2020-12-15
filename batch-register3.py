@@ -368,7 +368,7 @@ def transform (args, mappings, row):
       else:
         assert isinstance(v, str), "unsupported interpolation: " +\
           "user-supplied function must return string value in mapping to " +\
-          "EZID metadata element"
+          "ARKetype metadata element"
         md[d] = v
     except AssertionError as err:
       assert False, "%s, line %d: %s" % (args.mappingsFile, i+1, str(err))
@@ -501,7 +501,7 @@ def main ():
   p.add_argument("-c", metavar="CREDENTIALS", dest="credentials",
     help="either username:password, or just username (password will be " +\
     "prompted for), or session=... (as obtained by using the " +\
-    "EZID client tool)")
+    "ARKetype client tool)")
   p.add_argument("-o", metavar="COLUMNS", dest="outputColumns",
     default="_n,_id,_error",
     help="comma-separated list of columns to output, defaults to " +\
