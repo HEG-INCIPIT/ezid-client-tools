@@ -213,7 +213,7 @@ import urllib2
 # library for better portability.
 import xml.etree.ElementTree
 
-base_url = "http://37.187.98.23"
+base_url = "https://www.arketype.ch"
 
 def loadMappings (file):
   # returns: [(destination, expression), ...]
